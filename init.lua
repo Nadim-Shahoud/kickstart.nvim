@@ -965,6 +965,38 @@ do
   })
 end
 
+
+do
+  vim.pack.add({
+    { src = 'https://github.com/ThePrimeagen/harpoon', version = 'harpoon2' },
+  })
+
+  local harpoon = require('harpoon')
+
+  harpoon:setup()
+
+  vim.keymap.set('n', '<leader>a', function()
+    harpoon:list():add()
+  end)
+
+  vim.keymap.set('n', '<leader>h', function()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
+  end)
+
+  vim.keymap.set('n', '<C-h>', function()
+    harpoon:list():select(1)
+  end)
+  vim.keymap.set('n', '<C-j>', function()
+    harpoon:list():select(2)
+  end)
+  vim.keymap.set('n', '<C-k>', function()
+    harpoon:list():select(3)
+  end)
+  vim.keymap.set('n', '<C-l>', function()
+    harpoon:list():select(4)
+  end)
+end
+
 -- ============================================================
 -- SECTION 10: OPTIONAL EXAMPLES / NEXT STEPS
 -- kickstart.plugins.* examples
@@ -989,7 +1021,7 @@ do
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- require 'custom.plugins'
+  require 'custom.plugins'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
